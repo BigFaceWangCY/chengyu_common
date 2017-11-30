@@ -1,0 +1,14 @@
+{
+  "name": "chengyu_common",
+  "version": "0.0.4",
+  "description": "common tool",
+  "main": "./dist/common.js",
+  "scripts": {
+    "build": "babel src -d dist"
+  },
+  "keywords": [
+    "tool"
+  ],
+  "author": "hyXX2guo@outlook.com",
+  "license": "ISC"
+}
