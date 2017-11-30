@@ -81,12 +81,16 @@ function fGetUrlParamsByURL(url) {
   if (fIsNull(url)) {
     return {};
   }
-  let sUrl = url.split('?')[1];
-  let arr = sUrl.split('&');
-  for (let i in arr) {
-    obj[arr[i].split('=')[0]] = arr[i].split('=')[1];
+  try {
+    let sUrl = url.split('?')[1];
+    let arr = sUrl.split('&');
+    for (let i in arr) {
+      obj[arr[i].split('=')[0]] = arr[i].split('=')[1];
+    }
+    return obj;
+  } catch (e) {
+    return obj;
   }
-  return obj;
 }
 
 // 获得某月的第一天
