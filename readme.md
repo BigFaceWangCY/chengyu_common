@@ -11,6 +11,8 @@ const tool = require('chengyu_common')
 ```
 
 方法介绍
+
+
 | 方法名        | 作用    |  参数  |   返回值 |
 | ------------ | -----   | ----| ---------|
 |fAdd|安全加法|Number,Number|Number|
