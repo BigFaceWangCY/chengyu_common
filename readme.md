@@ -25,3 +25,4 @@ const tool = require('chengyu_common')
 |fGetUrlParamsByURL|获取URL参数|String|Object|
 |fGetMonthFirstDay|获取某月第一天|Number,Number|Date Object|
 |fGetMonthLastDay|获取某月最后一天|Number,Number|Date Object|
+|fDateFormat|格式化日期|String,Date|String|
