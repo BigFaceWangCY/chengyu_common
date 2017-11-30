@@ -1,3 +1,5 @@
+'use strict';
+
 // 检查参数是否不为空
 function fIsWithData(val) {
   if (val === undefined || val === null || val === '') {
@@ -25,7 +27,10 @@ function fIsNull(val) {
 }
 
 // 返回数字,len为小数位数,默认为4位,type为是否为负,默认可为负
-function fFormatNumber(val, len = 4, type = true) {
+function fFormatNumber(val) {
+  var len = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 4;
+  var type = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
+
   if (fIsNull(val)) {
     return '';
   }
@@ -43,48 +48,48 @@ function fFormatNumber(val, len = 4, type = true) {
 
 // 返回整数的长度
 function digitLength(num) {
-  const eSplit = num.toString().split(/[eE]/);
-  const len = (eSplit[0].split('.')[1] || '').length - +(eSplit[1] || 0);
+  var eSplit = num.toString().split(/[eE]/);
+  var len = (eSplit[0].split('.')[1] || '').length - +(eSplit[1] || 0);
   return len > 0 ? len : 0;
 }
 
 // 乘法
 function fMul(num1, num2) {
-  const num1Changed = Number(num1.toString().replace('.', ''));
-  const num2Changed = Number(num2.toString().replace('.', ''));
-  const baseNum = digitLength(num1) + digitLength(num2);
+  var num1Changed = Number(num1.toString().replace('.', ''));
+  var num2Changed = Number(num2.toString().replace('.', ''));
+  var baseNum = digitLength(num1) + digitLength(num2);
   return num1Changed * num2Changed / Math.pow(10, baseNum);
 }
 
 // 加法
 function fAdd(num1, num2) {
-  const baseNum = Math.pow(10, Math.max(digitLength(num1), digitLength(num2)));
+  var baseNum = Math.pow(10, Math.max(digitLength(num1), digitLength(num2)));
   return (fMul(num1, baseNum) + fMul(num2, baseNum)) / baseNum;
 }
 
 // 减法
 function fSub(num1, num2) {
-  const baseNum = Math.pow(10, Math.max(digitLength(num1), digitLength(num2)));
+  var baseNum = Math.pow(10, Math.max(digitLength(num1), digitLength(num2)));
   return (fMul(num1, baseNum) - fMul(num2, baseNum)) / baseNum;
 }
 
 // 除法
 function fDiv(num1, num2) {
-  const num1Changed = Number(num1.toString().replace('.', ''));
-  const num2Changed = Number(num2.toString().replace('.', ''));
+  var num1Changed = Number(num1.toString().replace('.', ''));
+  var num2Changed = Number(num2.toString().replace('.', ''));
   return fMul(num1Changed / num2Changed, Math.pow(10, digitLength(num2) - digitLength(num1)));
 }
 
 // 拿到url参数
 function fGetUrlParamsByURL(url) {
-  let obj = {};
+  var obj = {};
   if (fIsNull(url)) {
     return {};
   }
   try {
-    let sUrl = url.split('?')[1];
-    let arr = sUrl.split('&');
-    for (let i in arr) {
+    var sUrl = url.split('?')[1];
+    var arr = sUrl.split('&');
+    for (var i in arr) {
       obj[arr[i].split('=')[0]] = arr[i].split('=')[1];
     }
     return obj;
@@ -95,20 +100,20 @@ function fGetUrlParamsByURL(url) {
 
 // 获得某月的第一天
 function fGetMonthFirstDay(year, month) {
-  let date = new Date(year, month - 1);
+  var date = new Date(year, month - 1);
   date.setDate(1);
   return date;
 }
 
 // 获得某月的最后一天
 function fGetMonthLastDay(year, month) {
-  let newYear = year;
-  let newMonth = month++;
+  var newYear = year;
+  var newMonth = month++;
   if (month > 12) {
     newMonth -= 12;
     newYear++;
   }
-  let newDate = new Date(newYear, newMonth, 1);
+  var newDate = new Date(newYear, newMonth, 1);
   return new Date(newDate.getTime() - 1000 * 60 * 60 * 24);
 }
 
@@ -116,7 +121,7 @@ function fDateFormat(fmt, val) {
   if (fIsNull(val)) {
     return '';
   }
-  let date = new Date(val);
+  var date = new Date(val);
   var o = {
     "M+": date.getMonth() + 1, // 月
     "d+": date.getDate(), //日
@@ -127,8 +132,9 @@ function fDateFormat(fmt, val) {
     "S": date.getMilliseconds() //毫秒
   };
   if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (date.getFullYear() + "").substr(4 - RegExp.$1.length));
-  for (var k in o) if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, RegExp.$1.length == 1 ? o[k] : ("00" + o[k]).substr(("" + o[k]).length));
-  return fmt;
+  for (var k in o) {
+    if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, RegExp.$1.length == 1 ? o[k] : ("00" + o[k]).substr(("" + o[k]).length));
+  }return fmt;
 }
 
 exports.fIsWithData = fIsWithData;
