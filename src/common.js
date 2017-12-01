@@ -1,4 +1,9 @@
-// 检查参数是否不为空
+/**
+ * [fIsWithData 检查参数是否不为空]
+ * @method fIsWithData
+ * @param  {[type]}    val [description]
+ * @return {[boolean]}        [description]
+ */
 function fIsWithData (val) {
   if (val === undefined || val === null || val === '') {
     return false
@@ -11,7 +16,12 @@ function fIsWithData (val) {
   }
 }
 
-// 检查参数是否为空
+/**
+ * [fIsNull 检查参数是否为空]
+ * @method fIsNull
+ * @param  {[type]} val [description]
+ * @return {[boolean]}     [description]
+ */
 function fIsNull (val) {
   if (val === undefined || val === null || val === '') {
     return true
@@ -24,7 +34,14 @@ function fIsNull (val) {
   }
 }
 
-// 返回数字,len为小数位数,默认为4位,type为是否为负,默认可为负
+/**
+ * [fFormatNumber 返回数字,len为小数位数,默认为4位,type为是否为负,默认可为负]
+ * @method fFormatNumber
+ * @param  {[type]}      val         [description]
+ * @param  {Number}      [len=4]     [description]
+ * @param  {Boolean}     [type=true] [description]
+ * @return {[string]}                  [description]
+ */
 function fFormatNumber (val, len = 4, type = true) {
   if (fIsNull(val)) {
     return ''
@@ -41,14 +58,25 @@ function fFormatNumber (val, len = 4, type = true) {
   }
 }
 
-// 返回整数的长度
+/**
+ * [digitLength 返回整数的长度]
+ * @method digitLength
+ * @param  {[type]}    num [description]
+ * @return {[number]}        [description]
+ */
 function digitLength (num) {
   const eSplit = num.toString().split(/[eE]/)
   const len = (eSplit[0].split('.')[1] || '').length - +(eSplit[1] || 0)
   return len > 0 ? len : 0
 }
 
-// 乘法
+/**
+ * [fMul 安全乘法]
+ * @method fMul
+ * @param  {[type]} num1 [description]
+ * @param  {[type]} num2 [description]
+ * @return {[number]}      [description]
+ */
 function fMul (num1, num2) {
   const num1Changed = Number(num1.toString().replace('.', ''))
   const num2Changed = Number(num2.toString().replace('.', ''))
@@ -56,52 +84,86 @@ function fMul (num1, num2) {
   return num1Changed * num2Changed / Math.pow(10, baseNum)
 }
 
-// 加法
+/**
+ * [fAdd 安全加法]
+ * @method fAdd
+ * @param  {[type]} num1 [description]
+ * @param  {[type]} num2 [description]
+ * @return {[number]}      [description]
+ */
 function fAdd (num1, num2) {
   const baseNum = Math.pow(10, Math.max(digitLength(num1), digitLength(num2)))
   return (fMul(num1, baseNum) + fMul(num2, baseNum)) / baseNum
 }
 
-// 减法
+/**
+ * [fSub 安全减法]
+ * @method fSub
+ * @param  {[type]} num1 [description]
+ * @param  {[type]} num2 [description]
+ * @return {[number]}      [description]
+ */
 function fSub (num1, num2) {
   const baseNum = Math.pow(10, Math.max(digitLength(num1), digitLength(num2)))
   return (fMul(num1, baseNum) - fMul(num2, baseNum)) / baseNum
 }
 
-// 除法
+/**
+ * [fDiv 安全除法]
+ * @method fDiv
+ * @param  {[type]} num1 [description]
+ * @param  {[type]} num2 [description]
+ * @return {[number]}      [description]
+ */
 function fDiv (num1, num2) {
   const num1Changed = Number(num1.toString().replace('.', ''))
   const num2Changed = Number(num2.toString().replace('.', ''))
   return fMul(num1Changed / num2Changed, Math.pow(10, digitLength(num2) - digitLength(num1)))
 }
 
-// 拿到url参数
+/**
+ * [fGetUrlParamsByURL 拿到url参数]
+ * @method fGetUrlParamsByURL
+ * @param  {[string]}           url [description]
+ * @return {[Object]}               [description]
+ */
 function fGetUrlParamsByURL (url) {
   let obj = {}
   if (fIsNull(url)) {
     return {}
   }
-  try{
+  try {
     let sUrl = url.split('?')[1]
     let arr = sUrl.split('&')
     for (let i in arr) {
       obj[arr[i].split('=')[0]] = arr[i].split('=')[1]
     }
     return obj
-  } catch(e) {
+  } catch (e) {
     return obj
   }
-
 }
 
-// 获得某月的第一天
+/**
+ * [fGetMonthFirstDay 获取某月第一天]
+ * @method fGetMonthFirstDay
+ * @param  {[number]}          year  [description]
+ * @param  {[number]}          month [description]
+ * @return {[Date]}                [description]
+ */
 function fGetMonthFirstDay (year, month) {
   let date = new Date(year, month - 1)
   date.setDate(1)
   return date
 }
 
-// 获得某月的最后一天
+/**
+ * [fGetMonthLastDay 获得某月的最后一天]
+ * @method fGetMonthLastDay
+ * @param  {[number]}         year  [description]
+ * @param  {[number]}         month [description]
+ * @return {[Date]}               [description]
+ */
 function fGetMonthLastDay (year, month) {
   let newYear = year
   let newMonth = month++
@@ -113,24 +175,30 @@ function fGetMonthLastDay (year, month) {
   return new Date(newDate.getTime() - 1000 * 60 * 60 * 24)
 }
 
-function fDateFormat (fmt,val) {
-    if(fIsNull(val)){
-      return ''
-    }
-    let date = new Date(val)
-    var o = {
-        "M+": date.getMonth() + 1, // 月
-        "d+": date.getDate(), //日
-        "h+": date.getHours(), //小时
-        "m+": date.getMinutes(), //分
-        "s+": date.getSeconds(), //秒
-        "q+": Math.floor((date.getMonth() + 3) / 3), //季度
-        "S": date.getMilliseconds() //毫秒
-    };
-    if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (date.getFullYear() + "").substr(4 - RegExp.$1.length));
-    for (var k in o)
-    if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
-    return fmt;
+/**
+ * [fDateFormat 格式化日期]
+ * @method fDateFormat
+ * @param  {[string]}    fmt [description]
+ * @param  {[Date]}    val [description]
+ * @return {[string]}        [description]
+ */
+function fDateFormat (fmt, val) {
+  if (fIsNull(val)) {
+    return ''
+  }
+  let date = new Date(val)
+  var o = {
+    'M+': date.getMonth() + 1, // 月
+    'd+': date.getDate(), // 日
+    'h+': date.getHours(), // 小时
+    'm+': date.getMinutes(), // 分
+    's+': date.getSeconds(), // 秒
+    'q+': Math.floor((date.getMonth() + 3) / 3), // 季度
+    'S': date.getMilliseconds() // 毫秒
+  }
+  if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (date.getFullYear() + '').substr(4 - RegExp.$1.length))
+  for (var k in o) { if (new RegExp('(' + k + ')').test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (('00' + o[k]).substr(('' + o[k]).length))) }
+  return fmt
 }
 
 exports.fIsWithData = fIsWithData
