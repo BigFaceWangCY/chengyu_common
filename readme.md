@@ -26,3 +26,5 @@ const tool = require('chengyu_common')
 |fGetMonthFirstDay|获取某月第一天|Number,Number|Date Object|
 |fGetMonthLastDay|获取某月最后一天|Number,Number|Date Object|
 |fDateFormat|格式化日期|String,Date|String|
+|fHtmlTagSafeEncode|HTML字符转义编码,主要用于防止XSS攻击|String|String|
+|fHtmlTagSafeDecode|HTML字符转义解码,主要用于防止XSS攻击|String|String|

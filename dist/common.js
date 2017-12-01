@@ -208,6 +208,42 @@ function fDateFormat(fmt, val) {
   return fmt;
 }
 
+/**
+ * HTML字符转义编码,主要用于防止XSS攻击
+ * @param {string} str
+ * @return {string}
+ */
+function fHtmlTagSafeEncode(str) {
+  var s = '';
+  if (str.length === 0) return '';
+  s = str.replace(/&/g, '&amp;');
+  s = str.replace(/</g, '&lt;');
+  s = str.replace(/>/g, '&gt;');
+  s = str.replace(/ /g, '&nbsp;');
+  s = str.replace(/'/g, '&#39;');
+  s = str.replace(/"/g, '&#quot;');
+  s = str.replace(/\n/g, '<br />>');
+  return s;
+}
+
+/**
+ * HTML字符转义解码,主要用于防止XSS攻击
+ * @param {string} str
+ * @return {string}
+ */
+function fHtmlTagSafeDecode(str) {
+  var s = '';
+  if (str.length === 0) return 0;
+  s = str.replace(/&amp;/g, '&');
+  s = str.replace(/&lt;/g, '<');
+  s = str.replace(/&gt;/g, '>');
+  s = str.replace(/&nbsp;/g, ' ');
+  s = str.replace(/&#39;/g, '\'');
+  s = str.replace(/&quot;/g, '"');
+  s = str.replace(/[<br>|<br />];/g, '\n');
+  return s;
+}
+
 exports.fIsWithData = fIsWithData;
 exports.fIsNull = fIsNull;
 exports.fFormatNumber = fFormatNumber;
@@ -219,3 +255,5 @@ exports.fGetMonthLastDay = fGetMonthLastDay;
 exports.fGetMonthFirstDay = fGetMonthFirstDay;
 exports.fGetUrlParamsByURL = fGetUrlParamsByURL;
 exports.fDateFormat = fDateFormat;
+exports.fHtmlTagSafeEncode = fHtmlTagSafeEncode;
+exports.fHtmlTagSafeDecode = fHtmlTagSafeDecode;
