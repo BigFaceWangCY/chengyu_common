@@ -28,7 +28,8 @@ const tool = require('chengyu_common')
 |fDateFormat|格式化日期|String,Date|String|
 |fHtmlTagSafeEncode|HTML字符转义编码,主要用于防止XSS攻击|String|String|
 |fHtmlTagSafeDecode|HTML字符转义解码,主要用于防止XSS攻击|String|String|
-|List|列表类|null|Object|
+|List|列表类|void|Object|
+|Stack|栈类|void|Object|
 
 列表类介绍
 
@@ -50,3 +51,14 @@ const tool = require('chengyu_common')
 |hadPrev|判断是否有上一个元素|void|boolean|
 |currPus|返回当前位置|void|number|
 |moveTo|去往指定位置|number|boolean|
+
+栈类介绍
+
+|名|作用|参数|返回值|
+|-------------|-------------|--------------|-----------------|
+|push|将元素压入栈|elementType|boolean|
+|peek|取栈顶元素|void|elementType|
+|pop|将栈顶元素推出栈并返回|void|elementType|
+|toString|返回栈的字符串表示|void|string|
+|clear|清空栈|void|boolean|
+|length|返回栈内元素个数|void|number|

@@ -1,5 +1,6 @@
 const List = require('./list')
 const Util = require('./utils')
+const Stack = require('./stack')
 
 exports.fIsWithData = Util.fIsWithData
 exports.fIsNull = Util.fIsNull
@@ -15,3 +16,4 @@ exports.fDateFormat = Util.fDateFormat
 exports.fHtmlTagSafeEncode = Util.fHtmlTagSafeEncode
 exports.fHtmlTagSafeDecode = Util.fHtmlTagSafeDecode
 exports.List = List
+exports.Stack = Stack
