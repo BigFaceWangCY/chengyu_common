@@ -1,6 +1,6 @@
 {
   "name": "chengyu_common",
-  "version": "0.0.11",
+  "version": "0.1.1",
   "description": "common tool",
   "main": "./dist/common.js",
   "scripts": {
