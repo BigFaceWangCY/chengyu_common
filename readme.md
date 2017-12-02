@@ -32,6 +32,7 @@ const tool = require('chengyu_common')
 
 列表类介绍
 |名|作用|参数|返回值|
+| ------------ | -----   | ----| ---------|
 |length|返回列表的长度|void|number|
 |clear|清空列表|void|boolean|
 |toString|返回列表的字符串形式|void|string|
