@@ -1,3 +1,5 @@
+[Github 地址](https://github.com/BigFaceWangCY/chengyu_common)
+
 安装
 
 ```
@@ -30,6 +32,7 @@ const tool = require('chengyu_common')
 |fHtmlTagSafeDecode|HTML字符转义解码,主要用于防止XSS攻击|String|String|
 |List|列表类|void|Object|
 |Stack|栈类|void|Object|
+|Queue|队列类|void|Object|
 
 列表类介绍
 
@@ -59,6 +62,18 @@ const tool = require('chengyu_common')
 |push|将元素压入栈|elementType|boolean|
 |peek|取栈顶元素|void|elementType|
 |pop|将栈顶元素推出栈并返回|void|elementType|
+|toString|返回栈的字符串表示|void|string|
+|clear|清空栈|void|boolean|
+|length|返回栈内元素个数|void|number|
+
+队列类介绍
+
+|名|作用|参数|返回值|
+|-------------|-------------|--------------|-----------------|
+|enqueue|将元素入队|elementType|boolean|
+|dequeue|将元素出队|void|elementType|
+|front|取出队首元素|void|elementType|
+|back|取出队尾元素|void|elementType|
 |toString|返回栈的字符串表示|void|string|
 |clear|清空栈|void|boolean|
 |length|返回栈内元素个数|void|number|
