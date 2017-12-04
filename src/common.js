@@ -2,6 +2,8 @@ const List = require('./list')
 const Util = require('./utils')
 const Stack = require('./stack')
 const Queue = require('./queue')
+const OvonicQueue = require('./ovonicQueue')
+const LinKList = require('./linkList')
 
 exports.fIsWithData = Util.fIsWithData
 exports.fIsNull = Util.fIsNull
@@ -19,3 +21,5 @@ exports.fHtmlTagSafeDecode = Util.fHtmlTagSafeDecode
 exports.List = List
 exports.Stack = Stack
 exports.Queue = Queue
+exports.OvonicQueue = OvonicQueue
+exports.LinKList = LinKList

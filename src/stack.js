@@ -30,6 +30,7 @@ class Stack {
    * 返回栈的字符串表示
    */
   toString () {
+    console.log(`[Ojbect Stack]`)
     return `[Ojbect Stack]`
   }
 

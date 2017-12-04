@@ -1,8 +1,8 @@
 /**
- * 队列类
+ * 双向队列类
  */
 
-class Queue {
+class OvonicQueue {
   /**
    * 初始化
    * data 用于存储内容
@@ -16,9 +16,23 @@ class Queue {
    * @param {elementType} el
    * @return {boolean}
    */
-  enqueue (el) {
+  enqueueEnd (el) {
     try {
       this.data.push(el)
+      return true
+    } catch (error) {
+      return false
+    }
+  }
+
+  /**
+   * 将元素放入队首
+   * @param {elementType} el
+   * @return {boolean}
+   */
+  enqueueFront (el) {
+    try {
+      this.data.unshift(el)
       return true
     } catch (error) {
       return false
@@ -29,9 +43,22 @@ class Queue {
    * 从队首删除元素
    * @return {boolean}
    */
-  dequeue () {
+  dequeueFront () {
     try {
       this.data.shift()
+      return true
+    } catch (error) {
+      return false
+    }
+  }
+
+    /**
+   * 从队尾删除元素
+   * @return {boolean}
+   */
+  dequeueEnd () {
+    try {
+      this.data.pop()
       return true
     } catch (error) {
       return false
@@ -63,11 +90,11 @@ class Queue {
   }
 
   /**
-   * 返回队列的字符串表示
+   * 返回栈的字符串表示
    */
   toString () {
-    console.log(`[Ojbect Queue]`)
-    return `[Ojbect Queue]`
+    console.log(`[Ojbect ovonicQueue]`)
+    return `[Ojbect ovonicQueue]`
   }
 
   /**
@@ -91,4 +118,4 @@ class Queue {
   }
 }
 
-module.exports = Queue
+module.exports = OvonicQueue

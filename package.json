@@ -1,6 +1,6 @@
 {
   "name": "chengyu_common",
-  "version": "0.1.5",
+  "version": "0.1.7",
   "description": "common tool",
   "main": "./dist/common.js",
   "scripts": {
@@ -11,9 +11,14 @@
   ],
   "author": "hyXX2guo@outlook.com",
   "license": "ISC",
-  "dependencies": {},
+  "dependencies": {
+    "lodash.isequal": "^4.5.0"
+  },
   "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",
-    "standard": "^10.0.3"
+    "standard": "^10.0.3",
+    "webpack": "^3.9.1"
   }
 }

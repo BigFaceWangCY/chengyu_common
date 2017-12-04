@@ -33,6 +33,7 @@ const tool = require('chengyu_common')
 |List|列表类|void|Object|
 |Stack|栈类|void|Object|
 |Queue|队列类|void|Object|
+|OvonicQueue|双向队列类|void|Object|
 
 列表类介绍
 
@@ -77,3 +78,30 @@ const tool = require('chengyu_common')
 |toString|返回栈的字符串表示|void|string|
 |clear|清空栈|void|boolean|
 |length|返回栈内元素个数|void|number|
+
+双向队列类介绍
+
+|名|作用|参数|返回值|
+|-------------|-------------|--------------|-----------------|
+|enqueueFront|将元素从队首入队|elementType|boolean|
+|enqueueEnd|将元素从队尾入队|elementType|boolean|
+|dequeueFront|将元素从队首出队|void|elementType|
+|dequeueEnd|将元素从队首出队|void|elementType|
+|front|取出队首元素|void|elementType|
+|back|取出队尾元素|void|elementType|
+|toString|返回栈的字符串表示|void|string|
+|clear|清空栈|void|boolean|
+|length|返回栈内元素个数|void|number|
+
+链表类介绍
+
+|名|作用|参数|返回值|
+|-------------|-------------|--------------|-----------------|
+|append|将元素从队首入队|elementType|boolean|
+|delete|删除指定位置的元素,返回是否删除成功|elementType,number|boolean|
+|insert|向指定位置插入元素,返回是否成功|elementType,number|boolean|
+|indexOf|返回元素在链表中的位置|elementType|number|
+|getElement|返回指定位置的元素的值|number|elementType|
+|toString|返回链表的字符串表示|void|string|
+|clear|清空链表|void|boolean|
+|length|返回链表内元素个数|void|number|
