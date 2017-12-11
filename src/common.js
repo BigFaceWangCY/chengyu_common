@@ -4,6 +4,7 @@ const Stack = require('./stack')
 const Queue = require('./queue')
 const OvonicQueue = require('./ovonicQueue')
 const LinKList = require('./linkList')
+const isEqual = require('lodash.isequal')
 
 exports.fIsWithData = Util.fIsWithData
 exports.fIsNull = Util.fIsNull
@@ -23,3 +24,4 @@ exports.Stack = Stack
 exports.Queue = Queue
 exports.OvonicQueue = OvonicQueue
 exports.LinKList = LinKList
+exports.isEqual = isEqual
