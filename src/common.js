@@ -5,6 +5,7 @@ const Queue = require('./queue')
 const OvonicQueue = require('./ovonicQueue')
 const LinKList = require('./linkList')
 const isEqual = require('lodash.isequal')
+const Cookie = require('./cookie')
 
 exports.fIsWithData = Util.fIsWithData
 exports.fIsNull = Util.fIsNull
@@ -25,3 +26,6 @@ exports.Queue = Queue
 exports.OvonicQueue = OvonicQueue
 exports.LinKList = LinKList
 exports.isEqual = isEqual
+exports.fWriteCookie = Cookie.fWriteCookie
+exports.fReadCookie = Cookie.fReadCookie
+exports.fRemoveCookie = Cookie.fRemoveCookie

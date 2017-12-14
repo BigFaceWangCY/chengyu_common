@@ -30,6 +30,9 @@ const tool = require('chengyu_common')
 |fDateFormat|格式化日期|String,Date|String|
 |fHtmlTagSafeEncode|HTML字符转义编码,主要用于防止XSS攻击|String|String|
 |fHtmlTagSafeDecode|HTML字符转义解码,主要用于防止XSS攻击|String|String|
+|fWriteCookie|写入cookie|string,string,number,string,string|void|
+|fReadCookie|读取cookie|string|string|
+|fRemoveCookie|删除cookie|string|void|
 |List|列表类|void|Object|
 |Stack|栈类|void|Object|
 |Queue|队列类|void|Object|
